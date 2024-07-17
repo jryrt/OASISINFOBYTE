@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFF4E6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #FFE9CC;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #FFE9CC;
+            padding: 10px;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .main-content {
+            flex: 2;
+            margin-right: 20px;
+        }
+        .todo-form {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .todo-form input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #FFE9CC;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .todo-form button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #FFBC42;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 16px;
+        }
+        .todo-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .todo-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #FFEBCC;
+            border-bottom: 1px solid #FFE9CC;
+        }
+        .todo-list li.completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+        .todo-list li button {
+            border: none;
+            background-color: #FF6F61;
+            color: #fff;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .sidebar {
+            flex: 1;
+            background-color: #fec063;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar .card {
+            background-color: #FFEBCC;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .sidebar .card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .sidebar .card h3 {
+            font-size: 16px;
+            margin: 10px 0 0;
+        }
+        .image-section img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My To-Do List</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="happy-blogs.html">Happy Blogs</a>
+            <a href="daily-journal.html">Daily Journal</a>
+        </nav>
+        <div>Hi, Miiiii</div>
+    </header>
+    <div class="container">
+        <div class="main-content">
+            <div class="image-section">
+                <img src="main.jpg" alt="Main Image">
+            </div>
+            <form class="todo-form">
+                <input type="text" id="new-task" placeholder="Add a new task...">
+                <button type="button" onclick="addTask()">Add</button>
+            </form>
+            <ul class="todo-list" id="todo-list">
+                
+            </ul>
+        </div>
+        <div class="sidebar">
+            <div class="card">
+                <img src="p1.jpg" alt="Image 1">
+                <h3>Write</h3>
+            </div>
+            <div class="card">
+                <img src="p2.jpg" alt="Image 2">
+                <h3>sleep</h3>
+            </div>
+            <div class="card">
+                <img src="p3.jpg" alt="Image 3">
+                <h3>study</h3>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById('new-task');
+            const taskText = taskInput.value.trim();
+            if (taskText === '') {
+                return;
+            }
+
+            const taskItem = document.createElement('li');
+            taskItem.innerHTML = `
+                <span>${taskText}</span>
+                <button onclick="completeTask(this)">Complete</button>
+            `;
+            document.getElementById('todo-list').appendChild(taskItem);
+            taskInput.value = '';
+        }
+
+        function completeTask(button) {
+            const taskItem = button.parentElement;
+            taskItem.classList.toggle('completed');
+        }
+    </script>
+</body>
+</html>
+
+

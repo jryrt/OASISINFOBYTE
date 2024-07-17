@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Journal</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFF4E6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #FFE9CC;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #FFE9CC;
+            padding: 10px;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .journal-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .journal-form textarea {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #FFE9CC;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .journal-form button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #FFBC42;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .entries {
+            margin-top: 20px;
+        }
+        .entry {
+            padding: 10px;
+            background-color: #FFEBCC;
+            border-bottom: 1px solid #FFE9CC;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Daily Journal</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="happy-blogs.html">Happy Blogs</a>
+            <a href="daily-journal.html">Daily Journal</a>
+        </nav>
+        <div>Hi, Miiii</div>
+    </header>
+    <div class="container">
+        <form class="journal-form">
+            <textarea id="new-entry" rows="5" placeholder="Write your journal entry..."></textarea>
+            <button type="button" onclick="addEntry()">Add Entry</button>
+        </form>
+        <div class="entries" id="entries">
+            <!-- Journal entries will be added here -->
+        </div>
+    </div>
+
+    <script>
+        function addEntry() {
+            const entryInput = document.getElementById('new-entry');
+            const entryText = entryInput.value.trim();
+            if (entryText === '') {
+                return;
+            }
+
+            const entryItem = document.createElement('div');
+            entryItem.className = 'entry';
+            entryItem.textContent = entryText;
+            document.getElementById('entries').appendChild(entryItem);
+            entryInput.value = '';
+        }
+    </script>
+</body>
+</html>
